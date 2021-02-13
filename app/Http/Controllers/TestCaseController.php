@@ -34,16 +34,20 @@ class TestCaseController extends Controller
 		$search=(isset($_REQUEST['search']))?$_REQUEST['search']:'';
 		$limit=(int)$_REQUEST['limit'];
 		$offset=(int)$_REQUEST['offset'];
+		$module_name=$_REQUEST['module_name'];
 
 		$result =TestCase::where('deleted_at',NULL); // to get except soft-deleted data->get(); // to get except soft-deleted data
 		$data['totalRecords']=$result->count();
 
 		$result_two= DB::table('Db_interview_cases.test_cases',  'tc')
-			->select('tc.*','cd.module_name as module_name')
+			->select('tc.*','cd.module_name as module_name', 'cd.parent_id')
 			->leftJoin('db_interview_section.categories AS cd', 'cd.id', '=', 'tc.category_id')
 			->where('tc.summary','LIKE','%'.$search.'%')
 			->where('tc.deleted_at',NULL) // to get except soft-deleted data
 			->where('tc.status','!=','2')
+			->when($module_name != "" && strpos($module_name, "+")=="", function($result_two) use ($module_name){
+				return $result_two->where('module_name', [$module_name]);
+			})
 			->limit($limit)->offset($offset)
 			->orderBy('tc.id',$sort)
 			->get();
@@ -97,7 +101,7 @@ class TestCaseController extends Controller
 			$data['records'][$key]->check="<input type=checkbox class='btn'id='".$data['records'][$key]->id."' value='' >";
 		}
 		$data['table_data']='{"total":'.intval( $data['totalRecords'] ).',"recordsFiltered":'.intval( $data['num_rows'] ).',"rows":'.json_encode($data['records']).'}';
-        $data['menu']="cad_list";
+        $data['menu']="test_case_list";
 		echo $data['table_data'];
 		exit();
 	}
@@ -107,7 +111,6 @@ class TestCaseController extends Controller
 	{
 		$data['test_case']=TestCase::where('id',base64_decode($id))->first();	
 		if($data['test_case']['category_id']!=''){
-
 			$data['category']=Category::where('id',$data['test_case']['category_id'])->get();		
 		}
 		$data['menu']="test_case_list";

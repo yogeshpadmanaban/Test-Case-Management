@@ -21,7 +21,7 @@ class SocialController extends Controller
       $result=User::where('email', $user['email'])->first();
       if($result['email']){
         auth()->login($user);
-        return redirect()->to('/home');
+        return redirect()->to('/section');
       } 
       else{
         return redirect()->to('/login')->				

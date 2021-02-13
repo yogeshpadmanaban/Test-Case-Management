@@ -37,9 +37,6 @@ Route::get('/test_case_details', 'TestCaseController@fetch_test_case_details');
 Route::get('/test_case_update/{id}', 'TestCaseController@update');
 Route::post('/test_case_delete/{id}', 'TestCaseController@delete');
 
-Route::get('/module', 'Module\ModuleController@module_listing');
-Route::post('/admin/store_module', 'Module\ModuleController@store')->name('store_module');
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

@@ -75,35 +75,3 @@
     </div>
 </div>
 @endsection
-@include('layouts.partials.scripts')
-
-<script > 
-/*$(function() {
-    $("form[name='login_form']").validate({  //https://www.sitepoint.com/basic-jquery-form-validation-tutorial/
-        errorClass:'errors',
-
-        rules: {
-
-            email: {
-                required: true,
-                email: true
-            },
-            password: {
-                required: true,
-                minlength: 8
-            }
-        },
-        highlight: function (element) {
-            $(element).addClass('error');
-        },
-        unhighlight: function (element) {
-            $(element).removeClass('error');
-        },
-
-        errorPlacement: function(error, element) {
-        error.appendTo( element.parent("div"));
-        },
-    });
-});*/
-
-</script>

@@ -1,9 +1,8 @@
-  $(document).ready(function() {
+url= window.location.pathname.split("/").pop();
 
-    $.fn.extend({
+$.fn.extend({
     treed: function (o) {
-      
-      var openedClass = 'glyphicon-minus-sign';
+      var openedClass = 'fa-eye';
       var closedClass = 'glyphicon-plus-sign';
       
       if (typeof o != 'undefined'){
@@ -23,6 +22,9 @@
             branch.prepend("");
             branch.addClass('branch');
             branch.on('click', function (e) {
+                if(url=="test_case"){
+                    get_test_case(e.target.innerText)
+                }          
                 if (this == e.target) {
                     var icon = $(this).children('i:first');
                     icon.toggleClass(openedClass + " " + closedClass);
@@ -55,8 +57,6 @@
 });
 /* Initialization of treeviews */
 $('#tree1').treed();
-
-});
 
 
 //ajax call for delete

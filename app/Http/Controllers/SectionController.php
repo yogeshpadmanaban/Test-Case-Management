@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use App\Category;
-
 use Config;
 use Session;
 
@@ -63,6 +62,9 @@ class SectionController extends Controller
 	public function update($id)
 	{
 		$data['category']=Category::where('id',base64_decode($id))->first();	
+		if($data['category']['id']!=''){
+			$data['categories']=Category::where('id',$data['category']['id'])->get();		
+		}
 		$data['menu']="section_list";
 		return ['category' => $data['category'],'menu'=>$data['menu']];
 		exit();
@@ -78,7 +80,6 @@ class SectionController extends Controller
 		]);
 	}
 
-
 	public function module_name_check(Request $request){
 		$module_name = $request->module_name;
 		$id = $request->id;
@@ -91,7 +92,7 @@ class SectionController extends Controller
 		echo $result;
 	}
 
-	//to store category details 
+	//to store section details 
 	public function store(Request $request)
 	{
 		$id=$request['hdn_id'];

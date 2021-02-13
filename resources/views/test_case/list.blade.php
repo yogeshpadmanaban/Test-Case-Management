@@ -25,14 +25,21 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Test Case Report</h3>
+              <h3 class="box-title">Test Case List</h3>
                 <!-- <ul class="navbar-right"> -->
                 <h4> 
-                <a href="javascript:void(0)"> 
-                <!-- <i class="fa fa-wpforms"></i> -->
-                  <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal"              data-target="#test_case_form_modal">Add Test Case
-                  </button>
-                </a>
+                  <a href="javascript:void(0)"> 
+                    <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal"              data-target="#test_case_form_modal">Add Test Case
+                    </button>
+                  </a>
+                </h4>
+
+
+                <h4>  
+                  <a href="javascript:void(0)"> 
+                    <button type="button" onclick="get_test_case()" class="btn btn-primary" style="float: right;" > <i class="fa fa-eye" aria-hidden="true"></i> View All Test Cases
+                    </button>
+                  </a>
                 </h4>
                 <!-- </ul> -->
             </div> 
@@ -120,22 +127,22 @@
 
 
             <div class="box-body">
-
-                          <div class="row">
-                <div class="col-sm-3 col-md-6 col-lg-4">
+              <div class="row" style="margin-left: -9px;">
+                <div class="card col-sm-3 col-md-6 col-lg-4">
+                  <h4><b>Module</b></h4>
                   <ul id="tree1" style="width:60px;">
                     @foreach($categories as $category)
-                      <li>
-                        {{ $category->module_name }}
-                        @if(count($category->childs))
-                        @include('manageChild',['childs' => $category->childs])
-                        @endif
-                      </li>
-                    @endforeach
+                    <li>
+                      {{ $category->module_name }}
+                      @if(count($category->childs))
+                      @include('manageChild',['childs' => $category->childs])
+                      @endif
+                    </li>
+                  @endforeach
                   </ul>
                 </div>
-                                <div class="col-sm-3 col-md-6 col-lg-8">
-                <table class="table datatable custom-table table-striped select-all " id="list" data-toggle="table" data-hover="true" data-striped="true" data-smart-display="true" data-sort-order="desc" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[5, 10, 25,All]" data-url="test_case_details" method="get">
+                <div class="col-sm-3 col-md-6 col-lg-8">
+                <table class="table datatable custom-table table-striped select-all " id="list" data-toggle="table" data-hover="true" data-striped="true" data-smart-display="true" data-sort-order="desc" data-page-size="10" data-pagination="true" data-side-pagination="server" data-page-list="[5, 10, 25,All]" data-query-params="queryParams" data-url="test_case_details" method="get">
                     
                 <thead> 
                      <tr>
@@ -180,6 +187,27 @@
       $('#test_case_form').trigger('reset');
       location.reload();
   })
+
+  var module_name='';
+
+  function get_test_case(data=""){
+    module_name = data;
+    $('#list').bootstrapTable('refresh');
+  }
+
+  function queryParams(query_params) {
+
+    var params = {};
+
+    $('#toolbar').find('input[name]').each(function () {
+    params[$(this).attr('name')] = $(this).val();
+    });
+    params['order'] = 'desc';
+    params['limit'] = query_params.limit;
+    params['offset'] = query_params.offset;
+    params['module_name'] = module_name;
+    return params;
+  }
 
   $(function()
   {

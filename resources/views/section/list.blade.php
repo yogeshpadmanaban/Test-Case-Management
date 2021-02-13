@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<head>
-<!--     <link rel="stylesheet" href="{{ asset('assets/images/admin.jpg')}}<?php //echo base_url();?>/assets/bootstrap-table-master/dist/bootstrap-table.min.css"> -->
-</head>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.min.css') }}">
 <html>
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -25,7 +22,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Section Report</h3>
+              <h3 class="box-title">Section List</h3>
                 <!-- <ul class="navbar-right"> -->
                 <h4> 
                 <a href="javascript:void(0)"> 
@@ -90,19 +87,19 @@
               </div>
             </div>
 
-
             <div class="box-body">
-              <div class="row">
-                <div class="col-sm-3 col-md-6 col-lg-4">
+              <div class="row" style="margin-left: -9px;">
+                <div class="card col-sm-3 col-md-6 col-lg-4">
+                  <h4><b>Module</b></h4>
                   <ul id="tree1" style="width:60px;">
                     @foreach($categories as $category)
-                      <li>
-                        {{ $category->module_name }}
-                        @if(count($category->childs))
-                        @include('manageChild',['childs' => $category->childs])
-                        @endif
-                      </li>
-                    @endforeach
+                    <li>
+                      {{ $category->module_name }}
+                      @if(count($category->childs))
+                      @include('manageChild',['childs' => $category->childs])
+                      @endif
+                    </li>
+                  @endforeach
                   </ul>
                 </div>
 
@@ -162,8 +159,8 @@
       errorClass:'errors',
       rules: { 
         module:{
-          required:true,
-          valueNotEquals:" " 
+          // required:true,
+          // valueNotEquals:" " 
         },
         module_name:{
           required:true,
@@ -196,7 +193,7 @@
           },
           success: function (data)
           {
-            console.log(data);
+            $("#module option[value='"+data['category']['parent_id']+"']").prop('selected', true);
             $('#hidden_id').val(data['category']['id']);
             $('#module_name').val(data['category']['module_name']);
             $('#module_form_modal').modal('show');
