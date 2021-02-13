@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="64px" viewBox="0 0 65 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3">
+            <g id="document-copy" fill="#0077B7" fill-rule="nonzero">
+                <path d="M9.2138978,0 L0.571428571,8.598375 L0.571428571,64 L49.5714286,64 L49.5714286,0 L9.2138978,0 Z M46.9417327,61.3928571 L3.20112446,61.3928571 L3.20112446,10.1071429 L11.8791209,10.1071429 L11.8791209,2.60714286 L46.9417327,2.60714286 L46.9417327,61.3928571 Z" id="Shape"></path>
+                <polygon id="Rectangle" points="9.57142857 15 30.5714286 15 30.5714286 18 9.57142857 18"></polygon>
+                <polygon id="Rectangle" points="9.57142857 22.4 30.5714286 22.4 30.5714286 25.4 9.57142857 25.4"></polygon>
+                <polygon id="Rectangle" points="9.57142857 29.8 40.5714286 29.8 40.5714286 32.8 9.57142857 32.8"></polygon>
+                <polygon id="Rectangle" points="9.57142857 37.2 40.5714286 37.2 40.5714286 40.2 9.57142857 40.2"></polygon>
+                <polygon id="Rectangle" points="9.57142857 44.6 40.5714286 44.6 40.5714286 47.6 9.57142857 47.6"></polygon>
+                <polygon id="Rectangle-Copy" points="9.57142857 52 40.5714286 52 40.5714286 55 9.57142857 55"></polygon>
+            </g>
+            <path d="M62.8666325,24 L35.1333675,24 C33.9551295,24 33,23.0532655 33,21.8853835 L33,10.1146165 C33,8.94673454 33.9551295,8 35.1333675,8 L62.8666325,8 C64.0448705,8 65,8.94673454 65,10.1146165 L65,21.8853835 C65,23.0532655 64.0448705,24 62.8666325,24 Z" id="Path-Copy" fill="#0077B7" fill-rule="nonzero" transform="translate(49.000000, 16.000000) scale(1, -1) translate(-49.000000, -16.000000) "></path>
+            <text id="DOC" font-family="GoogleSans-Medium, Google Sans" font-size="12" font-weight="400" letter-spacing="-0.156521739" fill="#FFFFFF">
+                <tspan x="35" y="20">DOC</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
